@@ -21,15 +21,12 @@ app.set('view engine', 'ejs');
 //app.set('views', path.resolve(__dirname, 'views/ejs'));
 
 //load assets
-app.use('/css', express.static(path.resolve(__dirname, 'asstes/css')));
-app.use('/img', express.static(path.resolve(__dirname, 'asstes/img')));
-app.use('/js', express.static(path.resolve(__dirname, 'asstes/js')));
+app.use('/css', express.static(path.resolve(__dirname, 'assets/css')));
+app.use('/img', express.static(path.resolve(__dirname, 'assets/img')));
+app.use('/js', express.static(path.resolve(__dirname, 'assets/js')));
 
-app.get('/', (req,res) =>{
-    res.render('index');
-});
-
-
+//load routers
+app.use('/', require('./server/routes/router'));
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
